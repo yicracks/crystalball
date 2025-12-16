@@ -1,4 +1,20 @@
-export type SceneType = 'WINTER' | 'RAIN' | 'FISH' | 'SAKURA' | 'CAROUSEL' | 'SHANGHAI' | 'CAT_MOUSE' | 'BIRTHDAY';
+export type SceneType = 'WINTER' | 'RAIN' | 'FISH' | 'SAKURA' | 'CAROUSEL' | 'SHANGHAI' | 'CAT_MOUSE' | 'BIRTHDAY' | 'CHRISTMAS' | 'WEDDING' | 'EGYPT' | 'CITY_NIGHT' | 'FISHERMAN' | 'BAMBOO' | 'JELLYFISH' | 'CUSTOM';
+
+export interface CustomSceneConfig {
+  // Atmosphere
+  snow: boolean;
+  rain: boolean;
+  sakura: boolean;
+  // Objects
+  people: boolean;
+  forest: boolean; // Trees from Rain scene
+  christmasTree: boolean; // The big tree
+  cat: boolean;
+  // Colors
+  backgroundColor: string;
+  baseColor: string;
+  textColor: string;
+}
 
 export interface Vector2 {
   x: number;
@@ -101,10 +117,12 @@ export interface CarouselHorse {
   angle: number; // 0 to 2PI position on circle
   yOffset: number; // vertical bobbing
   color: string;
+  riderColor?: string; // Color of the person riding
 }
 export interface CarouselLight {
   angle: number;
   isOn: boolean;
+  color: string;
 }
 
 // --- SHANGHAI TYPES ---
@@ -151,4 +169,103 @@ export interface WishParticle {
   vy: number;
   life: number;
   color: string;
+}
+
+// --- CHRISTMAS TYPES ---
+export interface ChristmasLight {
+  x: number;
+  y: number;
+  color: string;
+  phase: number;
+  speed: number;
+}
+export interface Gift {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  color: string;
+  ribbonColor: string;
+}
+
+// --- WEDDING TYPES ---
+export interface Confetti {
+  x: number;
+  y: number;
+  color: string;
+  speedY: number;
+  sway: number;
+  swayOffset: number;
+}
+
+// --- EGYPT TYPES ---
+export interface Camel {
+  x: number;
+  y: number;
+  speed: number;
+  scale: number;
+}
+
+// --- CITY NIGHT TYPES ---
+export interface CityCar {
+  x: number;
+  y: number;
+  lane: number; // 0, 1, 2 etc.
+  speed: number;
+  color: string;
+  type: 'HEADLIGHT' | 'TAILLIGHT';
+}
+export interface Skyscraper {
+  x: number;
+  width: number;
+  height: number;
+  windows: boolean[]; // Array representing on/off state of windows
+}
+
+// --- FISHERMAN TYPES ---
+export interface InkParticle {
+  x: number;
+  y: number;
+  radius: number;
+  speedY: number;
+  speedX: number;
+  opacity: number;
+}
+export interface InkMountain {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  color: string; // Grey shade
+}
+
+// --- BAMBOO TYPES ---
+export interface BambooStalk {
+  x: number;
+  width: number;
+  color: string;
+  segments: number;
+  sway: number;
+  swayOffset: number;
+}
+export interface BambooLeaf {
+  x: number;
+  y: number;
+  angle: number;
+  vx: number;
+  vy: number;
+  opacity: number;
+}
+
+// --- JELLYFISH TYPES ---
+export interface JellyfishEntity {
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+  size: number;
+  color: string; // Base color
+  tentaclePhase: number;
+  isGlowing: boolean;
+  glowTimer: number;
 }
